@@ -11,4 +11,10 @@ class ApplicationController < ActionController::Base
     body = response.body
     parsed = JSON.parse(response.body, symbolize_names: true)
   end
+
+  def get_commits
+    response = Faraday.get 'https://api.github.com/repos/aidenmendez/little-esty-shop/commits'
+    body = response.body
+    parsed = JSON.parse(response.body, symbolize_names: true)
+  end
 end
