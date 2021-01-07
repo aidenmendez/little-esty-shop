@@ -362,8 +362,23 @@
           2,
           2,
           null,
+          null,
           1,
           2,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
           null,
           null
         ]
@@ -379,6 +394,10 @@
           1,
           null,
           1,
+          null,
+          1,
+          4,
+          null,
           null
         ]
       },
@@ -465,7 +484,7 @@
           1,
           null,
           1,
-          null,
+          3,
           null,
           null
         ]
@@ -474,30 +493,11 @@
         "lines": [
           1,
           null,
-          1,
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          1,
-          1,
-          null,
           null
         ]
       },
       "/Users/v/mod_2/little-esty-shop/app/controllers/api/github_api_controller.rb": {
         "lines": [
-          1,
-          null,
           1,
           null,
           1,
@@ -515,16 +515,27 @@
           1,
           null,
           1,
+          1,
+          1,
+          1,
+          1,
+          null,
           null,
           1,
-          0,
-          0,
-          0,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
           null,
           null
         ]
       }
     },
-    "timestamp": 1610040365
+    "timestamp": 1610047955
   }
 }
