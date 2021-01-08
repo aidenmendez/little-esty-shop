@@ -37,11 +37,16 @@ describe 'As an Admin' do
     end
 
     it 'I see the date next to each invoice id and list is ordered asc' do
+      Invoice.destroy_all
+
+    invoice_1 = Invoice.create!(customer_id: @customer_1.id, merchant_id: @merchant.id, status: 0, created_at: "2012-01-25 09:54:09")
+    invoice_4 = Invoice.create!(customer_id: @customer_1.id, merchant_id: @merchant.id, status: 0, created_at: "2012-01-26 09:56:09")
 
     visit admin_index_path
 
-    expect(page).to have_content(@invoice_1.format_date)
-    expect(@invoice_1.id).to appear_before(@invoice_4.id)
+    expect(page).to have_content(invoice_1.format_date)
+
+    expect(invoice_1.format_date).to appear_before(invoice_4.format_date)
     end
   end
 end

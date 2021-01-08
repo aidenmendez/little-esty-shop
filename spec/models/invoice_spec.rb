@@ -20,7 +20,7 @@ RSpec.describe Invoice, type: :model do
     @invoice_2 = Invoice.create!(customer_id: @customer_1.id, merchant_id: @merchant.id, status: 1)
     @invoice_3 = Invoice.create!(customer_id: @customer_1.id, merchant_id: @merchant.id, status: 2)
 
-    expect(Invoice.incomplete_invoices).to eq([@invoice_1.id])
+    expect(Invoice.incomplete_invoices).to eq([@invoice_1])
     end
 
   describe 'instance methods' do

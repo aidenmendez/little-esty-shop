@@ -9,7 +9,7 @@ class Invoice < ApplicationRecord
   enum status: ['in progress', :completed, :cancelled]
 
   def self.incomplete_invoices
-    where(status: 0).order(created_at: :asc).pluck(:id)
+    where(status: 0).order(created_at: :asc).distinct
   end
 
   def format_date
