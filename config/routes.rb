@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
 namespace :api do
   get "/github_api", to: "github_api#index", as: 'github_index'
 end
