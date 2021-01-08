@@ -36,11 +36,11 @@ describe 'As an Admin' do
     expect(page).to_not have_content(@invoice_3.id)
     end
 
-    it 'I see the date next to each invoice id and list is ordered desc' do
+    it 'I see the date next to each invoice id and list is ordered asc' do
 
     visit admin_index_path
 
-    expect(page).to have_content(@invoice_1.created_at.format_date)
+    expect(page).to have_content(@invoice_1.format_date)
     expect(@invoice_1.id).to appear_before(@invoice_4.id)
     end
   end
