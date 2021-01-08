@@ -37,7 +37,7 @@ describe 'As an Admin' do
     end
 
     it 'I see the date next to each invoice id and list is ordered asc' do
-      Invoice.destroy_all
+    Invoice.destroy_all
 
     invoice_1 = Invoice.create!(customer_id: @customer_1.id, merchant_id: @merchant.id, status: 0, created_at: "2012-01-25 09:54:09")
     invoice_4 = Invoice.create!(customer_id: @customer_1.id, merchant_id: @merchant.id, status: 0, created_at: "2012-01-26 09:56:09")
