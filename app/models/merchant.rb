@@ -8,4 +8,8 @@ class Merchant < ApplicationRecord
   def top_customers
     # require 'pry'; binding.pry
   end
+
+  def all_items
+    
+  end
 end
