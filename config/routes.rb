@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     get "/github_api", to: "github_api#index", as: 'github_index'
   end
   resources :merchants do
-    resources :items, controller: 'merchant/items', only: [:index]
+    resources :items, controller: 'merchant/items', only: [:index, :show]
     resources :invoices, controller: 'merchant/invoices', only: [:index]
     resources :dashboard, controller: 'merchant/dashboard', only: [:index]
   end
