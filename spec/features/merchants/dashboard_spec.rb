@@ -74,8 +74,16 @@ RSpec.describe "as a merchant" do
       expect(current_path).to eq("/merchants/#{@merchant.id}/invoices")
     end
 
-    it "I see the my merchant's top five customers and their respective number of successful transactions with my merchant" do
-      require 'pry'; binding.pry
-    end
+    # User story Merchant Favorite Customer
+    # it "I see the my merchant's top five customers and their respective number of successful transactions with my merchant" do
+    #   visit merchant_dashboard_index_path(@merchant.id)
+
+    #   expect(page).to have_content("Top Customers")
+    #   expect(page).to have_content(@customer6.name)
+    #   expect(page).to have_content(@customer3.name)
+    #   expect(page).to have_content(@customer4.name)
+    #   expect(page).to have_content(@customer5.name)
+    #   expect(page).not_to have_content(@customer1.name)
+    # end
   end
 end
