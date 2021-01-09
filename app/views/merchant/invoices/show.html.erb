@@ -1,0 +1,6 @@
+<h1>Invoice-<%= @invoice.id %></h1>
+
+<h2>Details</h2>
+<p>ID: <%= @invoice.id %></p>
+<p>Status: <%= @invoice.status %></p>
+<p>Created: <%= "#{@invoice.created_at.strftime('%A')}, #{@invoice.created_at.strftime('%B')} #{@invoice.created_at.day}, #{@invoice.created_at.year}" %></p>
