@@ -10,4 +10,11 @@ RSpec.describe InvoiceItem, type: :model do
   it { should validate_presence_of :unit_price}
   it { should validate_presence_of :status}
   end
+
+  describe 'class methods' do
+  it 'Sums Revenue' do
+  
+  expect(InvoiceItem.total_revenue).to eq(50)
+  end
+end
 end
