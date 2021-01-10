@@ -20,7 +20,6 @@ class Invoice < ApplicationRecord
   def total_revenue
     total = 0
     invoice_items.each do |item|
-      # require 'pry'; binding.pry
       total += item.quantity * item.unit_price
     end
     total
