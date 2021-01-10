@@ -32,4 +32,15 @@ RSpec.describe Invoice, type: :model do
     expect(invoice_1.date_time).to eq("Saturday, January 09, 2021")
     end
   end
+    it 'Sums Revenue' do
+      @merchant = Merchant.create!(name: 'House of thingys')
+      @customer = Customer.create!(first_name: 'Hooman', last_name:"Mcbuythings", shipping_address: "Bouldah!")
+      @invoice_1 = Invoice.create!(customer_id: @customer.id, merchant_id: @merchant.id, status: 0, created_at: 2012-03-25)
+      @item_1 = Item.create!(name: 'doo hickey', description: 'more fun than a hootenany!', unit_price: 23, merchant_id: @merchant.id)
+      @item_2 = Item.create!(name: 'doo hickey pro', description: 'gooolllld', unit_price: 40, merchant_id: @merchant.id)
+      @invoice_item_1 = InvoiceItem.create!(item_id: @item_1.id, invoice_id: @invoice_1.id, quantity: 10, unit_price: @item_1.unit_price, status: 0)
+      @invoice_item_2 = InvoiceItem.create!(item_id: @item_2.id, invoice_id: @invoice_1.id, quantity: 1, unit_price: @item_2.unit_price, status: 1)
+    
+    expect(@invoice_1.total_revenue).to eq(270)
+    end
 end
