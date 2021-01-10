@@ -6,3 +6,5 @@
   <li><%= link_to "#{item.name}", merchant_item_path(@merchant.id, item.id) %></li>
   <% end %>
 </ul>
+
+<section> <%= link_to "Create Item", new_merchant_item_path %> </section>
