@@ -26,4 +26,28 @@ RSpec.describe "As a merchant" do
       expect(page).to have_content(@item1.unit_price)
     end
   end
+
+  describe "When I visit the merchants item show page" do
+    before do
+      @merchant1 = FactoryBot.create(:merchant)
+      @item1 = FactoryBot.create(:item, merchant_id: @merchant1.id)
+      @item2 = FactoryBot.create(:item, merchant_id: @merchant1.id)
+      @item3 = FactoryBot.create(:item, merchant_id: @merchant1.id)
+      @item4 = FactoryBot.create(:item, merchant_id: @merchant1.id)
+
+      @merchant2 = FactoryBot.create(:merchant)
+      @item5 = FactoryBot.create(:item, merchant_id: @merchant2.id)
+      @item6 = FactoryBot.create(:item, merchant_id: @merchant2.id)
+    end
+
+    it "has a link to update the item" do
+      visit merchant_item_path(@item1.merchant_id, @item1.id)
+
+      expect(page).to have_link("Update Item")
+
+      click_on("Update Item")
+
+      expect(current_path).to eq(edit_merchant_item_path(@item1.merchant_id, @item1.id))
+    end
+  end
 end
