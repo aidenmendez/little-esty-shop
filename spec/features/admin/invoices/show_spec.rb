@@ -46,5 +46,11 @@ RSpec.describe 'as an admin', type: :feature do
       expect(page).to have_content(@invoice_item_1.status)
       expect(page).to have_content(@invoice_item_2.status)
     end
+
+    it 'I see invoice revenue' do
+      visit admin_invoice_path("#{@invoice_1.id}")
+
+      expect(page).to have_content(@invoice_1.total_revenue)
+    end
   end
 end
