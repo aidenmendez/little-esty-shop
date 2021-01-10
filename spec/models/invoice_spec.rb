@@ -29,7 +29,7 @@ RSpec.describe Invoice, type: :model do
     customer_1 = Customer.create!(first_name: 'John', last_name: 'Doe')
     invoice_1 = Invoice.create!(customer_id: customer_1.id, merchant_id: merchant.id, status: 0)
 
-    expect(invoice_1.date_time).to eq("Saturday, January 09, 2021")
+    expect(invoice_1.date_time).to eq("#{invoice_1.created_at.strftime('%A')}, #{invoice_1.created_at.strftime('%B')} #{invoice_1.created_at.day}, #{invoice_1.created_at.year}")
     end
   end
 end

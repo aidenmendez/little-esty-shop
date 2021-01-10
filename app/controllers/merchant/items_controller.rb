@@ -9,7 +9,6 @@ class Merchant::ItemsController < ApplicationController
   end
 
   def edit
-    require 'pry'; binding.pry
     @item = Item.find(params[:id])
   end
 end

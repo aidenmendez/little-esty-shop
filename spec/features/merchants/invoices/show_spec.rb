@@ -41,8 +41,8 @@ RSpec.describe "As a merchant" do
       expect(page).to have_content("Invoice-#{@invoice1.id}")
       expect(page).to have_content("ID: #{@invoice1.id}")
       expect(page).to have_content("Status: #{@invoice1.status}")
-      # needs to be in format Monday, July 18, 2019
-      expect(page).to have_content("Created: #{@invoice.created_at.strftime('%A')}, #{@invoice.created_at.strftime('%B')} #{@invoice.created_at.day}, #{@invoice.created_at.year}")
+
+      expect(page).to have_content("Created: #{@invoice1.created_at.strftime('%A')}, #{@invoice1.created_at.strftime('%B')} #{@invoice1.created_at.day}, #{@invoice1.created_at.year}")
     end
   end
 end
