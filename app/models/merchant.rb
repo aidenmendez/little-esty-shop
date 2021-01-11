@@ -6,7 +6,7 @@ class Merchant < ApplicationRecord
   validates_presence_of :name
 
   def top_customers
-    # require 'pry'; binding.pry
+    require 'pry'; binding.pry
   end
 
   def all_items
