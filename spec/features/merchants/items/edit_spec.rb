@@ -16,7 +16,7 @@ RSpec.describe "As a merchant" do
 
     it "I see a form filled in with the existing item attribute information" do
       visit edit_merchant_item_path(@item1.merchant.id, @item1.id )
-      save_and_open_page
+   
     end
 
     it "When I update the information in the form and I click ‘submit’, I'm redirected back to the item show page where I see the updated information" do

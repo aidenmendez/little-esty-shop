@@ -46,7 +46,7 @@ RSpec.describe "As a merchant" do
       expect(page).to have_link("Update Item")
 
       click_on("Update Item")
-      save_and_open_page
+     
       expect(current_path).to eq(edit_merchant_item_path(@item1.merchant_id, @item1.id))
     end
   end
