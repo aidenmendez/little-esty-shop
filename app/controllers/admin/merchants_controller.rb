@@ -20,11 +20,6 @@ class Admin::MerchantsController < ApplicationController
     redirect_to admin_merchant_path(@merchant)
   end
 
-private
- def merchant_params
-   params.permit(:name, :status)
- end
-
   def new
   end
 
@@ -33,3 +28,9 @@ private
     merchant.save
     redirect_to admin_merchants_path
   end
+
+private
+ def merchant_params
+   params.permit(:name, :status)
+ end
+end
