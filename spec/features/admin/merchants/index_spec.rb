@@ -34,6 +34,7 @@ RSpec.describe 'As an Admin', type: :feature do
       click_on "Create Merchant"
 
       expect(current_path).to eq(new_admin_merchant_path)
+      expect(page).to have_field(:name)
     end
   end
 end

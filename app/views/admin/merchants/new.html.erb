@@ -1,0 +1,7 @@
+<h1>Create New Merchant</h1>
+
+<%= render partial: 'form', locals:{
+                                    path: admin_merchants_path,
+                                    merchant: @merchant,
+                                    method: :post
+                                    } %>
