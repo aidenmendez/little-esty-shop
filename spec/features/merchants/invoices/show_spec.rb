@@ -44,5 +44,13 @@ RSpec.describe "As a merchant" do
 
       expect(page).to have_content("Created: #{@invoice1.created_at.strftime('%A')}, #{@invoice1.created_at.strftime('%B')} #{@invoice1.created_at.day}, #{@invoice1.created_at.year}")
     end
+
+    it "Then I see all of the customer information related to that invoice" do
+      visit merchant_invoice_path(@merchant1.id,  @invoice1.id)
+      customer = Customer.find(@invoice1.customer_id)
+      expect(page).to have_content("Name: #{customer.first_name} #{customer.last_name}")
+      expect(page).to have_content("Shipping address: #{customer.shipping_address}")
+
+    end
   end
 end
