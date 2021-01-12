@@ -20,7 +20,7 @@ describe 'As a visitor when I visito a admin merchant show page' do
     click_on 'Submit'
 
     expect(current_path).to eq(admin_merchant_path(@merchant_1))
-    expect(@merchant.name).to eq("House of Fun")
-    expect(page).to have_content("This merchant was successfully updated")
+    expect(page).to have_content("House of Fun")
+    expect(page).to have_content("Merchant successfully updated")
   end
 end
