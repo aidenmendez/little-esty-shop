@@ -30,3 +30,7 @@
 coverageecho "coverage" >> .gitignore
 
 .DS_Store
+
+/coverage
+coverage
+coverage/*
