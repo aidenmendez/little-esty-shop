@@ -5,11 +5,11 @@ class Merchant < ApplicationRecord
 
   validates_presence_of :name
 
-  def top_customers
+  def self.top_customers
     require 'pry'; binding.pry
   end
 
   def all_items
-    
+
   end
 end
