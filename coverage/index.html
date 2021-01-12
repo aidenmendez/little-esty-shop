@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2021-01-11T17:02:28-07:00">2021-01-11T17:02:28-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2021-01-11T18:12:01-07:00">2021-01-11T18:12:01-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="green">
-  94.07%
+  94.16%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.3
+         1.35
        </span>
     </span> hits/line
     )
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>135</b> relevant lines,
-    <span class="green"><b>127</b> lines covered</span> and
+    <b>137</b> relevant lines,
+    <span class="green"><b>129</b> lines covered</span> and
     <span class="red"><b>8</b> lines missed. </span>
     (<span class="green">
-  94.07%
+  94.16%
 </span>
 )
   </div>
@@ -139,9 +139,9 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#1998ed224fe24b8c2c2c97b86ef388b9ff1be866" class="src_link" title="app/models/merchant.rb">app/models/merchant.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">15</td>
-            <td class="cell--number">8</td>
-            <td class="cell--number">8</td>
+            <td class="cell--number">22</td>
+            <td class="cell--number">10</td>
+            <td class="cell--number">10</td>
             <td class="cell--number">0</td>
             <td class="cell--number">1.00</td>
             
@@ -363,7 +363,7 @@
             <td class="cell--number">3</td>
             <td class="cell--number">3</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.00</td>
+            <td class="cell--number">3.33</td>
             
           </tr>
         
@@ -1332,8 +1332,8 @@
     
 
     <div class="t-line-summary">
-      <b>8</b> relevant lines.
-      <span class="green"><b>8</b> lines covered</span> and
+      <b>10</b> relevant lines.
+      <span class="green"><b>10</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -1389,13 +1389,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="5">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="5">
+            <span class="hits">1</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">  has_many :invoice_items, through: :invoices</code>
           </li>
         </div>
       
@@ -1406,7 +1406,7 @@
 
             
 
-            <code class="ruby">  validates_presence_of :name</code>
+            <code class="ruby">  has_many :transactions, through: :invoices</code>
           </li>
         </div>
       
@@ -1428,29 +1428,29 @@
 
             
 
-            <code class="ruby">  def self.top_customers</code>
+            <code class="ruby">  validates_presence_of :name</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="9">
+          <li class="never" data-hits="" data-linenumber="9">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="10">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    require &#39;pry&#39;; binding.pry</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="10">
-            
-            
-
-            
-
-            <code class="ruby">  end</code>
+            <code class="ruby">  def self.top_merchants</code>
           </li>
         </div>
       
@@ -1461,18 +1461,18 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">    joins([invoices: :transactions], :invoice_items)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="12">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="12">
+            
             
 
             
 
-            <code class="ruby">  def all_items</code>
+            <code class="ruby">    .where(&quot;result = ?&quot;, 1)</code>
           </li>
         </div>
       
@@ -1483,7 +1483,7 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">    .select(&#39;merchants.*, sum(invoice_items.quantity * invoice_items.unit_price) as total_revenue&#39;)</code>
           </li>
         </div>
       
@@ -1494,12 +1494,89 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">    .group(:id)</code>
           </li>
         </div>
       
         <div>
           <li class="never" data-hits="" data-linenumber="15">
+            
+            
+
+            
+
+            <code class="ruby">    .order(total_revenue: :desc)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="16">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    .limit(5)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="17">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="18">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="19">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def all_items</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="20">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="21">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="22">
             
             
 
@@ -4825,8 +4902,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="3">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="8" data-linenumber="3">
+            <span class="hits">8</span>
             
 
             

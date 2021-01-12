@@ -11,12 +11,13 @@ RSpec.describe Merchant, type: :model do
 
   describe 'class methods' do
     it 'should return top 5 merchants by revenue' do
-    merchant_1 = Merchant.create!(name: 'A')
-    merchant_2 = Merchant.create!(name: 'B')
-    merchant_3 = Merchant.create!(name: 'C')
-    merchant_4 = Merchant.create!(name: 'D')
-    merchant_5 = Merchant.create!(name: 'E')
-    merchant_6 = Merchant.create!(name: 'F')
+    merchant_1 = create(:merchant)
+    merchant_2 = create(:merchant)
+    merchant_3 = create(:merchant)
+    merchant_4 = create(:merchant)
+    merchant_5 = create(:merchant)
+    merchant_6 = create(:merchant)
+    merchant_7 = create(:merchant)
 
     item_1 = create(:item, merchant_id: merchant_1.id)
     item_2 = create(:item, merchant_id: merchant_2.id)
@@ -33,7 +34,7 @@ RSpec.describe Merchant, type: :model do
     invoice_4 = create(:invoice, customer: customer_1, merchant: merchant_4)
     invoice_5 = create(:invoice, customer: customer_1, merchant: merchant_5)
     invoice_6 = create(:invoice, customer: customer_1, merchant: merchant_6)
-    invoice_7 = create(:invoice, customer: customer_1, merchant: merchant_1)
+    invoice_7 = create(:invoice, customer: customer_1, merchant: merchant_7)
 
     transaction_1 = create(:transaction, invoice: invoice_1, result: 1)
     transaction_2 = create(:transaction, invoice: invoice_2, result: 1)
@@ -52,7 +53,7 @@ RSpec.describe Merchant, type: :model do
     invoice_item_6 = create(:invoice_item, item_id: item_6.id, invoice_id: invoice_6.id, quantity: 10, unit_price: 6)
     invoice_item_7 = create(:invoice_item, item_id: item_1.id, invoice_id: invoice_7.id, quantity: 10, unit_price: 10)
 
-    expect(Merchant.top_customers).to eq([merchant_1,merchant_2,merchant_3,merchant_4,merchant_5])
+    expect(Merchant.top_merchants).to eq([merchant_6,merchant_5,merchant_4,merchant_3, merchant_2])
     end
   end
 end
