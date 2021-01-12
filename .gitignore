@@ -27,6 +27,6 @@
 /config/master.key
 
 # Ignore Simplecov reports
-coverageecho "coverage" >> .gitignore
+echo "coverage" >> .gitignore
 
 .DS_Store
