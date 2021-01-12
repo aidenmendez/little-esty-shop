@@ -4,3 +4,18 @@
 <p>ID: <%= @invoice.id %></p>
 <p>Status: <%= @invoice.status %></p>
 <p>Created: <%= "#{@invoice.created_at.strftime('%A')}, #{@invoice.created_at.strftime('%B')} #{@invoice.created_at.day}, #{@invoice.created_at.year}" %></p>
+
+<h2>Customer Details</h2>
+<p>Name: <%= @customer.first_name %> <%= @customer.last_name %></p>
+<p>Shipping address: <%= @customer.shipping_address %>
+
+<h2>Items</h2>
+<% @items.each do |item| %>
+  <section id="item-section-<%= item.id %>">
+  <p>Name: <%= item.name %></p>
+  <p>Quantity: <%= @item_data[item.id][:quantity] %> units</p>
+  <p>Price: $<%= @item_data[item.id][:unit_price] %></p>
+  <p>Status: <%= @item_data[item.id][:status] %></p>
+  </section>
+  <br/>
+<% end %>
