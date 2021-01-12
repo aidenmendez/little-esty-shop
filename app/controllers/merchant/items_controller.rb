@@ -12,6 +12,22 @@ class Merchant::ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+
+  def new
+    @item = Item.new
+  end
+
+  def create
+    @item = Item.new(item_params)
+    @item.merchant_id = params[:merchant_id]
+    if @item.save
+      redirect_to merchant_items_path(params[:merchant_id])
+    else
+      flash.now[:error] = "Error: Missing or invaild input. Please try again."
+      render :new
+    end
+  end
+
   def update
     item = Item.find(params[:id])
     if item.update(item_params)
@@ -23,6 +39,7 @@ class Merchant::ItemsController < ApplicationController
   end
 
   private
+
 
   def item_params
     params.require(:item).permit(:name, :description, :unit_price)

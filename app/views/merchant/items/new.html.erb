@@ -1,0 +1,17 @@
+<h1> New Item </h1>
+
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
+
+<%= render partial: 'form', locals: { 
+                                      item: @item,
+                                      path: merchant_items_path,
+                                      method: :post,
+                                      button_text: "Create New Item"
+                                    }%>
+
+
+                                    

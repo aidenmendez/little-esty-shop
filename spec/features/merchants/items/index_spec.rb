@@ -25,5 +25,15 @@ RSpec.describe "As a merchant" do
       expect(page).not_to have_content(@item5.name)
       expect(page).not_to have_content(@item6.name)      
     end
+
+    it "has a link to create an Item" do
+      visit merchant_items_path(@merchant1)
+
+      expect(page).to have_link("Create Item")
+
+      click_link("Create Item")
+
+      expect(current_path).to eq(new_merchant_item_path(@merchant1.id))
+    end
   end
 end
