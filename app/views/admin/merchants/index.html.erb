@@ -3,4 +3,4 @@
 <% @merchants.each do |merchant| %>
 <%=  link_to merchant.name, admin_merchant_path(merchant.id)%> <br>
 <% end %>
-<%= button_to "Create Merchant", new_admin_merchant_path %>
+<%= button_to "Create Merchant", new_admin_merchant_path, method: :get %>
