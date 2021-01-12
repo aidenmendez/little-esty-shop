@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     # resources :customers, only: [:index, :show]
     # resources :invoices, only: [:index, :show]
     # resources :transactions, only: [:index, :show]
-
+    post '/admin/merchants/new', to: 'admin_merchants#new'
   namespace :admin do
     resources :merchants
     resources :invoices

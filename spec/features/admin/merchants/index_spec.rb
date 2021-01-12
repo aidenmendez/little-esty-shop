@@ -36,5 +36,18 @@ RSpec.describe 'As an Admin', type: :feature do
       expect(current_path).to eq(new_admin_merchant_path)
       expect(page).to have_field(:name)
     end
+    it 'When I fill out the form and click submit Im taken back to index and the merchant is there' do
+
+      visit admin_merchants_path
+
+      click_on "Create Merchant"
+
+      fill_in :name, with: "House of Fun"
+
+      click_on "Submit"
+      
+      expect(current_path).to eq(admin_merchants_path)
+      expect(page).to have_content("House of Fun")
+    end
   end
 end
