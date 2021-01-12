@@ -21,35 +21,43 @@ describe "as a merchant" do
 
       expect(current_path).to eq(new_merchant_item_path(@merchant1.id))
     end
+  end
 
-    describe "when I visit the new item page" do
-      before do
-        @merchant1 = FactoryBot.create(:merchant)
-        @item1 = FactoryBot.create(:item, merchant_id: @merchant1.id)
-        @item2 = FactoryBot.create(:item, merchant_id: @merchant1.id)
-        @item3 = FactoryBot.create(:item, merchant_id: @merchant1.id)
-        @item4 = FactoryBot.create(:item, merchant_id: @merchant1.id)
+  describe "when I visit the new item page" do
+    before do
+      @merchant1 = FactoryBot.create(:merchant)
+      @item1 = FactoryBot.create(:item, merchant_id: @merchant1.id)
+      @item2 = FactoryBot.create(:item, merchant_id: @merchant1.id)
+      @item3 = FactoryBot.create(:item, merchant_id: @merchant1.id)
+      @item4 = FactoryBot.create(:item, merchant_id: @merchant1.id)
 
-        @merchant2 = FactoryBot.create(:merchant)
-        @item5 = FactoryBot.create(:item, merchant_id: @merchant2.id)
-        @item6 = FactoryBot.create(:item, merchant_id: @merchant2.id)
-      end
+      @merchant2 = FactoryBot.create(:merchant)
+      @item5 = FactoryBot.create(:item, merchant_id: @merchant2.id)
+      @item6 = FactoryBot.create(:item, merchant_id: @merchant2.id)
+    end
 
-      it "has a form to create a new item" do
-        visit new_merchant_item_path(@merchant1)
+    it "has a form to create a new item" do
+      visit new_merchant_item_path(@merchant1)
 
-        fill_in :name, with: 'Guitar'
-        fill_in :description, with: "It is hanging on my wall, first thing I saw"
-        fill_in :unit_price, with: "100"
+      fill_in :name, with: 'Guitar'
+      fill_in :description, with: "It is hanging on my wall, first thing I saw"
+      fill_in :unit_price, with: "100"
 
-        click_on("Create New Item")
+      click_on("Create New Item")
 
-        expect(current_path).to eq(merchant_items_path(@merchant1.id))
+      expect(current_path).to eq(merchant_items_path(@merchant1.id))
 
-        expect(page).to have_content("Guitar")
+      expect(page).to have_content("Guitar")
 
-        expect(page).to have_content("Disabled")
-      end
+      expect(page).to have_content("Disabled")
+    end
+    
+    it "displays a flash error if info is missing" do
+      visit new_merchant_item_path(@merchant1)
+
+      click_on("Create New Item")
+
+      expect(page).to have_content("Error: Missing or invaild input. Please try again.")
     end
   end
 end

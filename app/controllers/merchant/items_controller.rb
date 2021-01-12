@@ -9,7 +9,6 @@ class Merchant::ItemsController < ApplicationController
   end
 
   def edit
-    require 'pry'; binding.pry
     @item = Item.find(params[:id])
   end
 
@@ -20,8 +19,12 @@ class Merchant::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.merchant_id = params[:merchant_id]
-    @item.save
-    redirect_to merchant_items_path(params[:merchant_id])
+    if @item.save
+      redirect_to merchant_items_path(params[:merchant_id])
+    else
+      flash.now[:error] = "Error: Missing or invaild input. Please try again."
+      render :new
+    end
   end
 
   def item_params
