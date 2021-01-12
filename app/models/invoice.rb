@@ -18,10 +18,6 @@ class Invoice < ApplicationRecord
   end
 
   def total_revenue
-    total = 0
-    invoice_items.each do |item|
-      total += item.quantity * item.unit_price
-    end
-    total
+    invoice_items.sum("quantity * unit_price")
   end
 end
