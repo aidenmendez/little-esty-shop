@@ -14,17 +14,17 @@ class Merchant::ItemsController < ApplicationController
   end
 
   def new
+    @item = Item.new
   end
 
   def create
-    Item.create!([
-      name: params[:name],
-      description: params[:description],
-      unit_price: params[:unit_price],
-      merchant_id: params[:merchant_id]
-      ])
-      # require 'pry'; binding.pry
+    @item = Item.new(item_params)
+    @item.merchant_id = params[:merchant_id]
+    @item.save
     redirect_to merchant_items_path(params[:merchant_id])
   end
 
+  def item_params
+    params.require(:item).permit(:name, :description, :unit_price)
+  end
 end

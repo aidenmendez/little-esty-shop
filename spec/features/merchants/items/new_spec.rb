@@ -37,8 +37,8 @@ describe "as a merchant" do
 
       it "has a form to create a new item" do
         visit new_merchant_item_path(@merchant1)
-
-        fill_in :name, with: "Guitar"
+        
+        fill_in :name, with: 'Guitar'
         fill_in :description, with: "It is hanging on my wall, first thing I saw"
         fill_in :unit_price, with: "100"
 

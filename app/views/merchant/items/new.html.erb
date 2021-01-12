@@ -1,11 +1,11 @@
 <h1> New Item </h1>
 
-<%= form_with url: merchant_items_path do |form| %>
-  <%= "Name" %>
-  <%= form.text_field :name %>
-  <%= "Description" %>
-  <%= form.text_field :description %>
-  <%= "Unit Price" %>
-  <%= form.text_field :unit_price %>
-  <%= form.submit "Create New Item" %>
-<% end %>
+<%= render partial: 'form', locals: { 
+                                      item: @item,
+                                      path: merchant_items_path,
+                                      method: :post,
+                                      button_text: "Create New Item"
+                                    }%>
+
+
+                                    
