@@ -48,8 +48,22 @@ RSpec.describe "As a merchant" do
     it "Then I see all of the customer information related to that invoice" do
       visit merchant_invoice_path(@merchant1.id,  @invoice1.id)
       customer = Customer.find(@invoice1.customer_id)
+
       expect(page).to have_content("Name: #{customer.first_name} #{customer.last_name}")
       expect(page).to have_content("Shipping address: #{customer.shipping_address}")
+
+    end
+    it "then I see all of my items on the invoice and the items' details" do
+      visit merchant_invoice_path(@merchant1.id,  @invoice1.id)
+      
+      expect(page).to have_content("Quantity: #{}")
+      # Item name
+      # - The quantity of the item ordered
+      # - The price the Item sold for
+      # - The Invoice Item status
+    end
+
+    it "I do not see any information related to Items for other merchants" do
 
     end
   end

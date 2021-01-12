@@ -251,8 +251,9 @@
         "lines": [
           1,
           1,
-          1,
-          1,
+          5,
+          5,
+          5,
           null,
           null
         ]
@@ -261,8 +262,8 @@
         "lines": [
           1,
           1,
-          1,
-          1,
+          8,
+          8,
           1,
           null,
           null
@@ -274,9 +275,9 @@
           1,
           1,
           1,
-          1,
-          1,
-          1,
+          10,
+          10,
+          10,
           null,
           null
         ]
@@ -380,10 +381,80 @@
           1,
           null,
           1,
+          null,
+          1,
+          0,
+          null,
           null
         ]
       },
-      "/Users/aidenmendez/Turing/2mod/projects/little-esty-shop/app/controllers/merchant/items_controller.rb": {
+      "/Users/aidenmendez/Turing/2mod/projects/little-esty-shop/app/models/customer.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null
+        ]
+      },
+      "/Users/aidenmendez/Turing/2mod/projects/little-esty-shop/app/models/invoice.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null
+        ]
+      },
+      "/Users/aidenmendez/Turing/2mod/projects/little-esty-shop/app/models/invoice_item.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null
+        ]
+      },
+      "/Users/aidenmendez/Turing/2mod/projects/little-esty-shop/app/controllers/merchant/invoices_controller.rb": {
         "lines": [
           1,
           1,
@@ -393,25 +464,12 @@
           null,
           1,
           1,
-          null,
-          null,
-          1,
-          1,
-          null,
-          null,
           1,
           1,
           1,
           1,
-          1,
+          2,
           null,
-          0,
-          null,
-          null,
-          null,
-          1,
-          null,
-          1,
           1,
           null,
           null
@@ -425,6 +483,6 @@
         ]
       }
     },
-    "timestamp": 1610411089
+    "timestamp": 1610467551
   }
 }
