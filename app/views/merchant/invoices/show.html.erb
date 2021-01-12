@@ -10,3 +10,12 @@
 <p>Shipping address: <%= @customer.shipping_address %>
 
 <h2>Items</h2>
+<% @items.each do |item| %>
+  <section id="item-section-<%= item.id %>">
+  <p>Name: <%= item.name %></p>
+  <p>Quantity: <%= @item_data[item.id][:quantity] %> units</p>
+  <p>Price: $<%= @item_data[item.id][:unit_price] %></p>
+  <p>Status: <%= @item_data[item.id][:status] %></p>
+  </section>
+  <br/>
+<% end %>
