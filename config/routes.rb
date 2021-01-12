@@ -4,7 +4,9 @@ Rails.application.routes.draw do
     get "/github_api", to: "github_api#index", as: 'github_index'
   end
   resources :merchants do
-    resources :items, controller: 'merchant/items', only: [:index, :show, :edit, :new, :create]
+
+    resources :items, controller: 'merchant/items', only: [:index, :show, :edit, :update, :new, :create]
+
     resources :invoices, controller: 'merchant/invoices', only: [:index, :show]
     resources :dashboard, controller: 'merchant/dashboard', only: [:index]
   end
@@ -13,10 +15,10 @@ Rails.application.routes.draw do
     # resources :customers, only: [:index, :show]
     # resources :invoices, only: [:index, :show]
     # resources :transactions, only: [:index, :show]
-
-    namespace :admin do
-      resources :merchants
-      resources :invoices
-    end
-    resources :admin, controller: 'admin/dashboard', only: [:index]
+    post '/admin/merchants/new', to: 'admin_merchants#new'
+  namespace :admin do
+    resources :merchants
+    resources :invoices
+  end
+  resources :admin, controller: 'admin/dashboard', only: [:index]
 end

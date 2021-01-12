@@ -12,6 +12,7 @@ class Merchant::ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+
   def new
     @item = Item.new
   end
@@ -26,6 +27,19 @@ class Merchant::ItemsController < ApplicationController
       render :new
     end
   end
+
+  def update
+    item = Item.find(params[:id])
+    if item.update(item_params)
+      flash[:notice] = "Item details updated successfully"
+      redirect_to merchant_item_path(item.merchant_id, item.id) 
+    else
+      redirect_to merchant_item_path(item.merchant_id, item.id), flash[:notice] = "An error occurred, please try again."
+    end
+  end
+
+  private
+
 
   def item_params
     params.require(:item).permit(:name, :description, :unit_price)

@@ -1,0 +1,14 @@
+<p>Edit Item</p>
+<%= form_with model: @item, url: merchant_item_path(@item.merchant_id, @item.id), local: true do |i| %>
+
+  <%= i.label :name %>
+  <%= i.text_field :name %>
+  <br/>
+  <%= i.label :description %>
+  <%= i.text_field :description %>
+  <br/>
+  <%= i.label :unit_price, "Price" %>
+  <%= i.text_field :unit_price %>
+  <br/>
+  <%= i.submit "Update" %>
+<% end %>

@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe 'As an Admin', type: :feature do
   describe 'When I visit the admin merchant index' do
     before(:each) do
+      Merchant.destroy_all
       @merchant_1 = Merchant.create!(name: 'House of thingys')
       @merchant_2 = Merchant.create!(name: 'House of mirros')
       @merchant_3 = Merchant.create!(name: 'House of horrors')
@@ -17,13 +18,36 @@ RSpec.describe 'As an Admin', type: :feature do
       expect(page).to have_content(@merchant_3.name)
     end
 
-    it 'I click on the name of a merchant and am taken to thier show page' do
+    it 'I click on the name of a merchant and am taken to their show page' do
 
       visit admin_merchants_path
 
       click_on @merchant_1.name
 
       expect(current_path).to eq("/admin/merchants/#{@merchant_1.id}")
+    end
+    it 'Has a button to create a merchant, when I check on the link Im taking to a form' do
+      visit admin_merchants_path
+
+      expect(page).to have_button("Create Merchant")
+
+      click_on "Create Merchant"
+
+      expect(current_path).to eq(new_admin_merchant_path)
+      expect(page).to have_field(:name)
+    end
+    it 'When I fill out the form and click submit Im taken back to index and the merchant is there' do
+
+      visit admin_merchants_path
+
+      click_on "Create Merchant"
+
+      fill_in :name, with: "House of Fun"
+
+      click_on "Submit"
+      
+      expect(current_path).to eq(admin_merchants_path)
+      expect(page).to have_content("House of Fun")
     end
   end
 end
