@@ -8,8 +8,8 @@ class Merchant < ApplicationRecord
   validates_presence_of :name
 
   def self.top_merchants
-    select("merchants.*, SUM(invoice_items.quantity * invoice_items.unit_price) AS total_revenue")
-    .joins(invoices: [:invoice_items, :transactions])
+    joins(invoices: [:invoice_items, :transactions])
+    .select("merchants.*, SUM(invoice_items.quantity * invoice_items.unit_price) AS total_revenue")
     .where("transactions.result = ?", 1)
     .group(:id)
     .order(total_revenue: :desc)
