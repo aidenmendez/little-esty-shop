@@ -16,6 +16,14 @@ class Merchant < ApplicationRecord
     .limit(5)
   end
 
+  def self.enabled_merchants
+    where(status: :enabled)
+  end
+
+  def self.disabled_merchants
+    where(status: :disabled)
+  end
+  
   def best_day
     invoices
     .joins(:invoice_items)

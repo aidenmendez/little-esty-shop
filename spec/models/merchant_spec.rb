@@ -56,6 +56,24 @@ RSpec.describe Merchant, type: :model do
     expect(Merchant.top_merchants).to eq([merchant_6,merchant_5,merchant_4,merchant_3, merchant_2])
     expect(Merchant.top_merchants[0].total_revenue).to eq(60)
     end
+      it "order by merchant status enabled" do
+
+        merchant_1 =create(:merchant, status: 'enabled')
+        merchant_2 = create(:merchant, status: 'enabled')
+        merchant_3 =create(:merchant, status: 'disabled')
+        merchant_4 = create(:merchant, status: 'disabled')
+
+        expect(Merchant.enabled_merchants).to eq([merchant_1, merchant_2])
+      end
+      it "order by merchant status disabled" do
+
+        merchant_1 =create(:merchant, status: 'enabled')
+        merchant_2 = create(:merchant, status: 'enabled')
+        merchant_3 =create(:merchant)
+        merchant_4 = create(:merchant)
+
+        expect(Merchant.disabled_merchants).to eq([merchant_3, merchant_4])
+      end
   end
     
   describe 'instance methods' do 
