@@ -54,6 +54,7 @@ RSpec.describe Merchant, type: :model do
     invoice_item_7 = create(:invoice_item, item_id: item_1.id, invoice_id: invoice_7.id, quantity: 10, unit_price: 10)
 
     expect(Merchant.top_merchants).to eq([merchant_6,merchant_5,merchant_4,merchant_3, merchant_2])
+    expect(Merchant.top_merchants[0].total_revenue).to eq(60)
     end
   end
 end

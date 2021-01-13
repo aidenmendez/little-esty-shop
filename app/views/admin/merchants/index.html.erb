@@ -7,5 +7,5 @@
 <h3>Top Merchants:</h3>
 
 <% @top_five_merchants.each do |merchant| %>
-<%= link_to merchant.name, admin_merchant_path(merchant.id)%><%= " - $#{merchant.total_revenue} revenue" %>
+<%= link_to merchant.name, admin_merchant_path(merchant.id)%><%= " - $#{merchant.total_revenue} revenue" %><br>
 <% end %>

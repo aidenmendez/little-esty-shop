@@ -94,7 +94,7 @@ RSpec.describe 'As an Admin', type: :feature do
 
     visit admin_merchants_path
 
-    expect(page).to have_content("#{merchant_6.name} - $160 revenue")
+    expect(page).to have_content("#{merchant_6.name} - $60 revenue")
     expect(page).to have_content("#{merchant_5.name} - $50 revenue")
     expect(page).to have_content("#{merchant_4.name} - $40 revenue")
     expect(page).to have_content("#{merchant_3.name} - $30 revenue")
