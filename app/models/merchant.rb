@@ -5,6 +5,7 @@ class Merchant < ApplicationRecord
   has_many :invoice_items, through: :invoices
   has_many :transactions, through: :items
 
+  enum status: [:disabled, :enabled]
   validates_presence_of :name
 
   def self.top_merchants
