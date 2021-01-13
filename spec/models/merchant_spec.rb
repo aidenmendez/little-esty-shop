@@ -57,4 +57,32 @@ RSpec.describe Merchant, type: :model do
     expect(Merchant.top_merchants[0].total_revenue).to eq(60)
     end
   end
+    
+  describe 'instance methods' do 
+    it 'Shows best day for each top merchant' do
+      merchant_1 = create(:merchant)
+
+      item_1 = create(:item, merchant_id: merchant_1.id)
+
+      customer_1 = create(:customer)
+
+      invoice_1 = create(:invoice, customer: customer_1, merchant: merchant_1, created_at: "2020-01-25 09:54:01")
+      invoice_2 = create(:invoice, customer: customer_1, merchant: merchant_1, created_at: "2020-01-26 06:53:07")
+      invoice_3 = create(:invoice, customer: customer_1, merchant: merchant_1, created_at: "2020-01-27 05:54:30")
+
+      transaction_1 = create(:transaction, invoice: invoice_1, result: 1)
+      transaction_2 = create(:transaction, invoice: invoice_2, result: 1)
+      transaction_3 = create(:transaction, invoice: invoice_3, result: 1)
+      transaction_4 = create(:transaction, invoice: invoice_1, result: 1)
+      transaction_5 = create(:transaction, invoice: invoice_1, result: 1)
+      transaction_6 = create(:transaction, invoice: invoice_2, result: 1)
+      transaction_7 = create(:transaction, invoice: invoice_3, result: 0)
+
+
+      invoice_item_6 = create(:invoice_item, item_id: item_1.id, invoice_id: invoice_1.id, quantity: 10, unit_price: 6)
+      invoice_item_7 = create(:invoice_item, item_id: item_1.id, invoice_id: invoice_1.id, quantity: 10, unit_price: 10)
+
+      expect(merchant_1.best_day).to eq(invoice_1.date_time)
+    end
+  end
 end
