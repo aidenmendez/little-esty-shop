@@ -1,8 +1,4 @@
-require 'faraday'
-require 'pry'
-require 'json'
-
-class GithubApi
+class GithubService
   def self.get_contributors
     response = Faraday.get 'https://api.github.com/repos/aidenmendez/little-esty-shop/contributors'
     body = response.body
