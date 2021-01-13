@@ -23,4 +23,14 @@ class Merchant < ApplicationRecord
   def self.disabled_merchants
     where(status: :disabled)
   end
+  
+  def best_day
+    invoices
+    .joins(:invoice_items)
+    .select("invoices.created_at, sum(invoice_items.quantity * invoice_items.unit_price) AS total_revenue")
+    .group(:created_at)
+    .order(:total_revenue)
+    .first
+    .date_time
+  end
 end

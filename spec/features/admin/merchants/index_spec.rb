@@ -99,10 +99,18 @@ RSpec.describe 'As an Admin', type: :feature do
     expect(page).to have_content("#{merchant_3.name} - $30 revenue")
     expect(page).to have_content("#{merchant_2.name} - $20 revenue")
     end
+
     it 'Has a button to disable and enable merchants' do
       merchant_1 =create(:merchant, status: 'enabled')
       merchant_2 = create(:merchant, status: 'enabled')
       merchant_3 =create(:merchant)
+
+
+    it 'shows top 5 merchants best day' do
+      merchant_1 = create(:merchant)
+      merchant_2 = create(:merchant)
+      merchant_3 = create(:merchant)
+
       merchant_4 = create(:merchant)
       merchant_5 = create(:merchant)
       merchant_6 = create(:merchant)
@@ -142,7 +150,6 @@ RSpec.describe 'As an Admin', type: :feature do
       invoice_item_6 = create(:invoice_item, item_id: item_6.id, invoice_id: invoice_6.id, quantity: 10, unit_price: 6)
       invoice_item_7 = create(:invoice_item, item_id: item_1.id, invoice_id: invoice_7.id, quantity: 10, unit_price: 10)
 
-
       visit admin_merchants_path
 
       expect(page).to have_button('Enable Merchant')
@@ -158,5 +165,14 @@ RSpec.describe 'As an Admin', type: :feature do
       expect(current_path).to eq(admin_merchants_path)
       expect(merchant_1.status).to eq('enabled')
     end
+
+      visit admin_merchants_path
+
+      expect(page).to have_content("Top selling day for #{merchant_6.name} was #{merchant_1.best_day}")
+      expect(page).to have_content("Top selling day for #{merchant_2.name} was #{merchant_2.best_day}")
+      expect(page).to have_content("Top selling day for #{merchant_3.name} was #{merchant_3.best_day}")
+      expect(page).to have_content("Top selling day for #{merchant_4.name} was #{merchant_4.best_day}")
+      expect(page).to have_content("Top selling day for #{merchant_5.name} was #{merchant_5.best_day}")
+     end
   end
 end

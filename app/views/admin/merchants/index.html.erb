@@ -1,8 +1,4 @@
 <h1> Merchants </h1>
-<% @merchants.each do |merchant| %>
-<%=  link_to merchant.name, admin_merchant_path(merchant.id)%> <br>
-<% end %>
-<%= button_to "Create Merchant", new_admin_merchant_path, method: :get %>
 
 <h3>Top Merchants:</h3>
 
@@ -12,4 +8,12 @@
 <%= button_to 'Enable Merchant', admin_merchant_path(merchant.id, update_to: 'disabled'), method: :patch %>
 <%= button_to 'Disable Merchant', admin_merchant_path(merchant.id, update_to: 'enabled'), method: :patch %>
 </section>
+<%=  "Top selling day for #{merchant.name} was #{merchant.best_day}"%><br>
+<% end %> <br>
+
+<% @merchants.each do |merchant| %>
+<%=  link_to merchant.name, admin_merchant_path(merchant.id)%> <br>
 <% end %>
+<%= button_to "Create Merchant", new_admin_merchant_path, method: :get %>
+
+
