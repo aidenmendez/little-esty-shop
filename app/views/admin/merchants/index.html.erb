@@ -1,11 +1,14 @@
 <h1> Merchants </h1>
-<% @merchants.each do |merchant| %>
-<%=  link_to merchant.name, admin_merchant_path(merchant.id)%> <br>
-<% end %>
-<%= button_to "Create Merchant", new_admin_merchant_path, method: :get %>
 
 <h3>Top Merchants:</h3>
 
 <% @top_five_merchants.each do |merchant| %>
 <%= link_to merchant.name, admin_merchant_path(merchant.id)%><%= " - $#{merchant.total_revenue} revenue" %><br>
+<% end %> <br>
+
+<% @merchants.each do |merchant| %>
+<%=  link_to merchant.name, admin_merchant_path(merchant.id)%> <br>
 <% end %>
+<%= button_to "Create Merchant", new_admin_merchant_path, method: :get %>
+
+

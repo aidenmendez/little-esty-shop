@@ -56,6 +56,9 @@ RSpec.describe Merchant, type: :model do
     expect(Merchant.top_merchants).to eq([merchant_6,merchant_5,merchant_4,merchant_3, merchant_2])
     expect(Merchant.top_merchants[0].total_revenue).to eq(60)
     end
+  end
+    
+  describe 'instance methods' do 
     it 'Shows best day for each top merchant' do
       merchant_1 = create(:merchant)
 
