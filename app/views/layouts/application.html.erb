@@ -15,17 +15,4 @@
     <% end %>
     <%= yield %>
   </body>
-  <footer>
-    <section id="github_api_stats">
-    <h3>Repository Statistics</h3>
-      <h4>Contributors</h2>
-      <% @contributors.each do |contributor| %>
-        <section id="github-user-section-<%= contributor.id %>">
-          <h5><%= contributor.username %></h5>
-          <p>Commits: <%= contributor.commit_count %></p>
-        </section>
-        <br/>     
-      <% end %> 
-    </section>
-  </footer>
 </html>
